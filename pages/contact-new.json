@@ -1,0 +1,664 @@
+{
+  "name": "contact-new",
+  "type": "page",
+  "url": "/new",
+  "params": {},
+  "variables": [
+    {
+      "name": "$state",
+      "type": "service"
+    },
+    {
+      "name": "newContact",
+      "description": "The new contact object bound to the form fields.",
+      "type": "property",
+      "value": "{ name: '', phone: '', email: '', address: '' }"
+    },
+    {
+      "name": "saveContact",
+      "description": "Saves the new contact to localStorage and navigates to its details page.",
+      "type": "method",
+      "body": "const contacts = JSON.parse(localStorage.getItem('contacts') || '[]');\n$ctrl.newContact.id = String(Date.now());\ncontacts.push($ctrl.newContact);\nlocalStorage.setItem('contacts', JSON.stringify(contacts));\n$ctrl.$state.go('contacts.contact-details', { id: $ctrl.newContact.id }, { reload: true });",
+      "invokeOnLoad": false,
+      "isAsync": false,
+      "returnType": {
+        "name": "any"
+      },
+      "parameters": [],
+      "watch": []
+    }
+  ],
+  "children": [
+    {
+      "name": "div",
+      "nodeName": "div",
+      "elementId": "",
+      "attributes": [],
+      "classList": [],
+      "conditionalClasses": [],
+      "conditionalStyles": [],
+      "contentType": "text",
+      "displayExpression": "",
+      "events": {},
+      "iterate": {
+        "array": "",
+        "variable": "",
+        "trackByIndex": false
+      },
+      "styles": [
+        {
+          "property": "width",
+          "value": "100%",
+          "enabled": true
+        },
+        {
+          "property": "height",
+          "value": "100%",
+          "enabled": true
+        },
+        {
+          "property": "padding",
+          "value": "24px",
+          "enabled": true
+        },
+        {
+          "property": "box-sizing",
+          "value": "border-box",
+          "enabled": true
+        }
+      ],
+      "layout": {
+        "container": {
+          "type": "box",
+          "orientation": "column",
+          "mainAxisAlignment": "flex-start",
+          "crossAxisAlignment": "center"
+        }
+      },
+      "children": [
+        {
+          "name": "div",
+          "nodeName": "div",
+          "elementId": "",
+          "attributes": [],
+          "classList": [
+            "details-panel"
+          ],
+          "conditionalClasses": [],
+          "conditionalStyles": [],
+          "contentType": "text",
+          "displayExpression": "",
+          "events": {},
+          "iterate": {
+            "array": "",
+            "variable": "",
+            "trackByIndex": false
+          },
+          "styles": [
+            {
+              "property": "width",
+              "value": "100%",
+              "enabled": true
+            },
+            {
+              "property": "max-width",
+              "value": "600px",
+              "enabled": true
+            }
+          ],
+          "layout": {
+            "cell": {
+              "type": "box-item",
+              "mainSize": "100%"
+            },
+            "container": {
+              "type": "box",
+              "orientation": "column",
+              "crossAxisAlignment": "stretch",
+              "gap": "24px"
+            }
+          },
+          "children": [
+            {
+              "name": "div",
+              "nodeName": "div",
+              "elementId": "",
+              "attributes": [],
+              "classList": [],
+              "conditionalClasses": [],
+              "conditionalStyles": [],
+              "contentType": "text",
+              "displayExpression": "",
+              "events": {},
+              "iterate": {
+                "array": "",
+                "variable": "",
+                "trackByIndex": false
+              },
+              "styles": [],
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                },
+                "container": {
+                  "type": "box",
+                  "orientation": "row",
+                  "mainAxisAlignment": "flex-start"
+                }
+              },
+              "children": [
+                {
+                  "name": "Button",
+                  "nodeName": "bln-button",
+                  "elementId": "",
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "classList": [],
+                  "conditionalClasses": [],
+                  "conditionalStyles": [],
+                  "contentType": "text",
+                  "displayExpression": "",
+                  "events": {},
+                  "iterate": {
+                    "array": "",
+                    "variable": "",
+                    "trackByIndex": false
+                  },
+                  "styles": [],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item"
+                    }
+                  },
+                  "children": [],
+                  "comments": "",
+                  "type": "core-component",
+                  "expressions": [
+                    {
+                      "to": "label",
+                      "expression": "'⟵ Back'"
+                    },
+                    {
+                      "to": "type",
+                      "expression": "'default'"
+                    },
+                    {
+                      "to": "onClick",
+                      "expression": "$ctrl.$state.go('contacts')"
+                    }
+                  ]
+                }
+              ],
+              "comments": ""
+            },
+            {
+              "name": "div",
+              "nodeName": "div",
+              "elementId": "",
+              "attributes": [],
+              "classList": [
+                "form-header"
+              ],
+              "conditionalClasses": [],
+              "conditionalStyles": [],
+              "contentType": "text",
+              "displayExpression": "",
+              "events": {},
+              "iterate": {
+                "array": "",
+                "variable": "",
+                "trackByIndex": false
+              },
+              "styles": [
+                {
+                  "property": "margin-bottom",
+                  "value": "24px",
+                  "enabled": true
+                },
+                {
+                  "property": "padding-bottom",
+                  "value": "16px",
+                  "enabled": true
+                },
+                {
+                  "property": "border-bottom",
+                  "value": "1px solid var(--border-color)",
+                  "enabled": true
+                }
+              ],
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                }
+              },
+              "children": [
+                {
+                  "name": "h2",
+                  "nodeName": "h2",
+                  "elementId": "",
+                  "attributes": [],
+                  "classList": [],
+                  "conditionalClasses": [],
+                  "conditionalStyles": [],
+                  "contentType": "text",
+                  "displayExpression": "",
+                  "events": {},
+                  "iterate": {
+                    "array": "",
+                    "variable": "",
+                    "trackByIndex": false
+                  },
+                  "styles": [
+                    {
+                      "property": "margin",
+                      "value": "0",
+                      "enabled": true
+                    },
+                    {
+                      "property": "font-weight",
+                      "value": "700",
+                      "enabled": true
+                    },
+                    {
+                      "property": "font-size",
+                      "value": "1.5rem",
+                      "enabled": true
+                    },
+                    {
+                      "property": "color",
+                      "value": "var(--text-primary)",
+                      "enabled": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "text",
+                      "nodeName": "text",
+                      "textContent": "Add New Contact",
+                      "evaluate": false
+                    }
+                  ],
+                  "comments": ""
+                }
+              ],
+              "comments": ""
+            },
+            {
+              "name": "div",
+              "nodeName": "div",
+              "elementId": "",
+              "attributes": [],
+              "classList": [
+                "form-container"
+              ],
+              "conditionalClasses": [],
+              "conditionalStyles": [],
+              "contentType": "text",
+              "displayExpression": "",
+              "events": {},
+              "iterate": {
+                "array": "",
+                "variable": "",
+                "trackByIndex": false
+              },
+              "styles": [],
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                },
+                "container": {
+                  "type": "box",
+                  "orientation": "column",
+                  "crossAxisAlignment": "stretch",
+                  "gap": "16px"
+                }
+              },
+              "children": [
+                {
+                  "name": "Text Input",
+                  "nodeName": "bln-text-input",
+                  "elementId": "",
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "classList": [],
+                  "conditionalClasses": [],
+                  "conditionalStyles": [],
+                  "contentType": "text",
+                  "displayExpression": "",
+                  "events": {},
+                  "iterate": {
+                    "array": "",
+                    "variable": "",
+                    "trackByIndex": false
+                  },
+                  "styles": [],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item",
+                      "growFactor": 0,
+                      "shrinkFactor": 0,
+                      "mainSize": "auto"
+                    }
+                  },
+                  "children": [],
+                  "comments": "",
+                  "type": "core-component",
+                  "expressions": [
+                    {
+                      "to": "label",
+                      "expression": "'Name'"
+                    },
+                    {
+                      "to": "value",
+                      "expression": "$ctrl.newContact.name"
+                    }
+                  ],
+                  "formControl": {
+                    "modelName": "value"
+                  }
+                },
+                {
+                  "name": "Text Input",
+                  "nodeName": "bln-text-input",
+                  "elementId": "",
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "classList": [],
+                  "conditionalClasses": [],
+                  "conditionalStyles": [],
+                  "contentType": "text",
+                  "displayExpression": "",
+                  "events": {},
+                  "iterate": {
+                    "array": "",
+                    "variable": "",
+                    "trackByIndex": false
+                  },
+                  "styles": [],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item",
+                      "growFactor": 0,
+                      "shrinkFactor": 0,
+                      "mainSize": "auto"
+                    }
+                  },
+                  "children": [],
+                  "comments": "",
+                  "type": "core-component",
+                  "expressions": [
+                    {
+                      "to": "label",
+                      "expression": "'Phone'"
+                    },
+                    {
+                      "to": "type",
+                      "expression": "'text'"
+                    },
+                    {
+                      "to": "value",
+                      "expression": "$ctrl.newContact.phone"
+                    }
+                  ],
+                  "formControl": {
+                    "modelName": "value"
+                  }
+                },
+                {
+                  "name": "Text Input",
+                  "nodeName": "bln-text-input",
+                  "elementId": "",
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "classList": [],
+                  "conditionalClasses": [],
+                  "conditionalStyles": [],
+                  "contentType": "text",
+                  "displayExpression": "",
+                  "events": {},
+                  "iterate": {
+                    "array": "",
+                    "variable": "",
+                    "trackByIndex": false
+                  },
+                  "styles": [],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item",
+                      "growFactor": 0,
+                      "shrinkFactor": 0,
+                      "mainSize": "auto"
+                    }
+                  },
+                  "children": [],
+                  "comments": "",
+                  "type": "core-component",
+                  "expressions": [
+                    {
+                      "to": "label",
+                      "expression": "'Email'"
+                    },
+                    {
+                      "to": "type",
+                      "expression": "'email'"
+                    },
+                    {
+                      "to": "value",
+                      "expression": "$ctrl.newContact.email"
+                    }
+                  ],
+                  "formControl": {
+                    "modelName": "value"
+                  }
+                },
+                {
+                  "name": "Text Input",
+                  "nodeName": "bln-text-input",
+                  "elementId": "",
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "classList": [],
+                  "conditionalClasses": [],
+                  "conditionalStyles": [],
+                  "contentType": "text",
+                  "displayExpression": "",
+                  "events": {},
+                  "iterate": {
+                    "array": "",
+                    "variable": "",
+                    "trackByIndex": false
+                  },
+                  "styles": [],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item",
+                      "growFactor": 0,
+                      "shrinkFactor": 0,
+                      "mainSize": "auto"
+                    }
+                  },
+                  "children": [],
+                  "comments": "",
+                  "type": "core-component",
+                  "expressions": [
+                    {
+                      "to": "label",
+                      "expression": "'Address'"
+                    },
+                    {
+                      "to": "type",
+                      "expression": "'text'"
+                    },
+                    {
+                      "to": "value",
+                      "expression": "$ctrl.newContact.address"
+                    }
+                  ],
+                  "formControl": {
+                    "modelName": "value"
+                  }
+                }
+              ],
+              "comments": ""
+            },
+            {
+              "name": "div",
+              "nodeName": "div",
+              "elementId": "",
+              "attributes": [],
+              "classList": [
+                "action-bar",
+                "right"
+              ],
+              "conditionalClasses": [],
+              "conditionalStyles": [],
+              "contentType": "text",
+              "displayExpression": "",
+              "events": {},
+              "iterate": {
+                "array": "",
+                "variable": "",
+                "trackByIndex": false
+              },
+              "styles": [],
+              "layout": {
+                "cell": {
+                  "type": "box-item"
+                },
+                "container": {
+                  "type": "box",
+                  "orientation": "row",
+                  "mainAxisAlignment": "flex-end",
+                  "crossAxisAlignment": "center",
+                  "gap": "16px"
+                }
+              },
+              "children": [
+                {
+                  "name": "Button",
+                  "nodeName": "bln-button",
+                  "elementId": "",
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "classList": [],
+                  "conditionalClasses": [],
+                  "conditionalStyles": [],
+                  "contentType": "text",
+                  "displayExpression": "",
+                  "events": {},
+                  "iterate": {
+                    "array": "",
+                    "variable": "",
+                    "trackByIndex": false
+                  },
+                  "styles": [],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item",
+                      "growFactor": 0,
+                      "shrinkFactor": 0,
+                      "mainSize": "auto"
+                    }
+                  },
+                  "children": [],
+                  "comments": "",
+                  "type": "core-component",
+                  "expressions": [
+                    {
+                      "to": "label",
+                      "expression": "'Cancel'"
+                    },
+                    {
+                      "to": "type",
+                      "expression": "'default'"
+                    },
+                    {
+                      "to": "onClick",
+                      "expression": "$ctrl.$state.go('contacts')"
+                    }
+                  ]
+                },
+                {
+                  "name": "Button",
+                  "nodeName": "bln-button",
+                  "elementId": "",
+                  "attributes": [
+                    {
+                      "property": "core",
+                      "value": ""
+                    }
+                  ],
+                  "classList": [],
+                  "conditionalClasses": [],
+                  "conditionalStyles": [],
+                  "contentType": "text",
+                  "displayExpression": "",
+                  "events": {},
+                  "iterate": {
+                    "array": "",
+                    "variable": "",
+                    "trackByIndex": false
+                  },
+                  "styles": [],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item",
+                      "growFactor": 0,
+                      "shrinkFactor": 0,
+                      "mainSize": "auto"
+                    }
+                  },
+                  "children": [],
+                  "comments": "",
+                  "type": "core-component",
+                  "expressions": [
+                    {
+                      "to": "label",
+                      "expression": "'Save'"
+                    },
+                    {
+                      "to": "type",
+                      "expression": "'primary'"
+                    },
+                    {
+                      "to": "onClick",
+                      "expression": "$ctrl.saveContact()"
+                    }
+                  ]
+                }
+              ],
+              "comments": ""
+            }
+          ],
+          "comments": ""
+        }
+      ],
+      "comments": ""
+    }
+  ],
+  "parentPageName": "contacts"
+}
